@@ -11,7 +11,13 @@
 		"test:generate-output": "jest --json --outputFile=.jest-test-results.json || true"
 	},
 	"dependencies": {
+		"@types/cors": "^2.8.12",
+		"cors": "^2.8.5",
+		"helmet": "^6.0.0",
 		"next": "latest",
+		"next-connect": "^0.13.0",
+		"pino-http": "^8.2.1",
+		"pino-pretty": "^9.1.1",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},
