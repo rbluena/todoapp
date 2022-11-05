@@ -1,8 +1,9 @@
 import { router } from '~/lib/config';
 import Todo from '~/models/todo';
+import apiPaths from '~/shared/api-paths';
 
 router
-	.get('/api/todos', async (_, res) => {
+	.get(apiPaths.todo.all, async (_, res) => {
 		try {
 			const todos = await Todo.find({});
 			res.status(200).json({ success: true, data: todos });
@@ -16,7 +17,7 @@ router
 			res.status(400).json({ success: false, error: errorMessage });
 		}
 	})
-	.post('/api/todos', (_, res) => {
+	.post(apiPaths.todo.add, (_, res) => {
 		res.status(200).json({ message: 'Succefully was created!' });
 	});
 
