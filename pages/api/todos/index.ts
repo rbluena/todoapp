@@ -1,6 +1,6 @@
 import { router } from '~/lib/config';
 import Todo from '~/models/todo';
-import apiPaths from '~/shared/api-paths';
+import apiPaths from '~/utils/api/paths';
 
 router
 	.get(apiPaths.todo.all, async (_, res) => {
