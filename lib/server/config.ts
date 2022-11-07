@@ -1,9 +1,13 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiResponse } from 'next';
 import nc from 'next-connect';
 import Pino from 'pino-http';
 import helmet from 'helmet';
 import cors from 'cors';
 import dbConnect from './dbConnect';
+import { ExtendedNextApiRequest } from './types';
+import { applyAuthMiddleware } from './middleware/auth';
+import { applySettingsMiddleware } from './middleware/settings';
+import { applyUserAgentMiddleware } from './middleware/ua';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -24,7 +28,7 @@ const router = (() => {
 	dbConnect();
 
 	// Router initialization
-	const handler = nc<NextApiRequest, NextApiResponse>({
+	const handler = nc<ExtendedNextApiRequest, NextApiResponse>({
 		onError(error, _, res) {
 			res.status(501).json({ error: 'Server error', message: error.message });
 		},
@@ -39,11 +43,14 @@ const router = (() => {
 	return handler;
 })();
 
+router.use(helmet());
+router.use(cors());
+router.use(applyAuthMiddleware);
+router.use(applySettingsMiddleware);
+router.use(applyUserAgentMiddleware);
+
 if (isDevelopment) {
 	router.use(logger);
 }
-
-router.use(helmet());
-router.use(cors());
 
 export { router };
