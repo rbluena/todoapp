@@ -1,28 +1,19 @@
+import { NextApiResponse } from 'next';
 import { router } from '~/lib/server/config';
+import { allTodosControllers } from '~/lib/server/services/todo/todo.controller';
 import Todo from '~/models/todo';
+import { ExtendedNextApiRequest } from '~/types/server';
 import type { ITodo } from '~/types/shared';
 import apiPaths from '~/utils/api/paths';
+
+// const allTodosController = (_, res, next) => { }
 
 router
 	/**
 	 * GET /api/v1/todos
 	 *
 	 */
-	.get(apiPaths.todo.all, async (_, res): Promise<void> => {
-		try {
-			const todos: ITodo[] = await Todo.find({});
-			res.status(200).json({ success: true, data: todos });
-			res.send({ success: true });
-		} catch (error) {
-			let errorMessage;
-
-			if (error instanceof Error) {
-				errorMessage = error.message;
-			}
-
-			res.status(400).json({ success: false, error: errorMessage });
-		}
-	})
+	.get(apiPaths.todo.all, allTodosControllers)
 
 	/**
 	 * POST /api/v1/todos
