@@ -17,12 +17,9 @@ const todoSchema = new Schema(
 		},
 		board: {
 			type: Schema.Types.ObjectId,
+			required: true,
 		},
-		attachments: {
-			type: Array,
-
-			default: [],
-		},
+		attachments: [{ name: String, path: String }],
 	},
 	{ timestamps: true }
 );

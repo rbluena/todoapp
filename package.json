@@ -13,6 +13,7 @@
 	},
 	"dependencies": {
 		"@types/cors": "^2.8.12",
+		"@types/ua-parser-js": "^0.7.36",
 		"cors": "^2.8.5",
 		"helmet": "^6.0.0",
 		"mongoose": "^6.7.1",
@@ -21,7 +22,9 @@
 		"pino-http": "^8.2.1",
 		"pino-pretty": "^9.1.1",
 		"react": "18.2.0",
-		"react-dom": "18.2.0"
+		"react-dom": "18.2.0",
+		"ua-parser-js": "^1.0.32",
+		"zod": "^3.19.1"
 	},
 	"devDependencies": {
 		"@testing-library/jest-dom": "^5.16.5",
