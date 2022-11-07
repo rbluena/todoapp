@@ -1,4 +1,4 @@
-import { ConfigsType, Locale, SSRMiddleware } from '../types';
+import { ConfigsType, Locale, SSRMiddleware } from '~/types/server';
 
 /**
  *

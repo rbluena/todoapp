@@ -4,7 +4,7 @@ import Pino from 'pino-http';
 import helmet from 'helmet';
 import cors from 'cors';
 import dbConnect from './dbConnect';
-import { ExtendedNextApiRequest } from './types';
+import { ExtendedNextApiRequest } from '~/types/server';
 import { applyAuthMiddleware } from './middleware/auth';
 import { applySettingsMiddleware } from './middleware/settings';
 import { applyUserAgentMiddleware } from './middleware/ua';
