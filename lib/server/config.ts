@@ -35,7 +35,7 @@ const router = (() => {
 		onNoMatch(_, res) {
 			res.status(404).json({
 				error: 'Not Found!',
-				message: 'The rosource you are trying to reach is not available!',
+				message: 'The resource you are trying to reach is not available!',
 			});
 		},
 	});
