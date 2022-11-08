@@ -12,7 +12,7 @@ const todoSchema = new Schema(
 			/* Description of the todo item */
 			type: String,
 		},
-		board: {
+		status: {
 			type: Schema.Types.ObjectId,
 			required: true,
 		},
@@ -21,4 +21,4 @@ const todoSchema = new Schema(
 	{ timestamps: true }
 );
 
-export default models.Todo || model<TodoDocument>('Todo', todoSchema);
+export default models.Todo<TodoDocument> || model<TodoDocument>('Todo', todoSchema);

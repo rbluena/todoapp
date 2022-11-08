@@ -1,11 +1,11 @@
 import Todo from './todo.model';
 
-export const createTodo = async (data) => {
+export const createTodo = async () => {
 	return {};
 };
 
-export const getAllTodos = async (query) => {
-	const todos = Todo.find({});
+export const getAllTodos = async () => {
+	const todos = await Todo.find({});
 
 	return todos;
 };
