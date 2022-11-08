@@ -27,13 +27,11 @@ async function dbConnect() {
 				bufferCommands: false,
 			};
 
-			cached.promise = mongoose
-				.connect(MONGODB_URI, opts)
-				.then((mongoose) => mongoose);
+			cached.promise = await mongoose.connect(MONGODB_URI, opts);
 		}
 
 		try {
-			cached.conn = await cached.promise;
+			cached.conn = cached.promise;
 			mongoose.set('debug', true);
 		} catch (error) {
 			cached.promise = null;
@@ -44,7 +42,7 @@ async function dbConnect() {
 			bufferCommands: false,
 		};
 
-		return mongoose.connect(MONGODB_URI, opts).then((mongoose) => mongoose);
+		return mongoose.connect(MONGODB_URI, opts);
 	}
 
 	return cached.conn;
