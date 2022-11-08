@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  db:
+    container_name: "mongodb_local"
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27021:27017"
+    # environment:
+    # - MONGO_INITDB_ROOT_USERNAME="root"
+    # - MONGO_INITDB_ROOT_PASSWORD="password"
+    # volumes:
+    #   -
